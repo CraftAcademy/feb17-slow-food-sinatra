@@ -54,6 +54,18 @@ class SlowFood < Sinatra::Base
     erb :index
   end
 
+  get '/menu' do
+    @dishes = Dish.all
+    @starter = Dish.all(category: 'starter')
+    @main_course = Dish.all(category: 'main_course')
+    @dessert = Dish.all(category: 'dessert')
+    erb :menu
+  end
+
+  get '/auth/login' do
+    erb :login
+  end
+
   get '/auth/login' do
     erb :login
   end
