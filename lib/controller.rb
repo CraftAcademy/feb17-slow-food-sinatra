@@ -63,10 +63,6 @@ class SlowFood < Sinatra::Base
     erb :login
   end
 
-  get '/auth/login' do
-    erb :login
-  end
-
   post '/auth/login' do
     env['warden'].authenticate!
     flash[:success] = "Successfully logged in #{current_user.username}"
