@@ -3,7 +3,3 @@ Given(/^the following restaurants exist:$/) do |table|
     Restaurant.create(hash)
   end
 end
-
-Given(/^I visit the about page$/) do
-  visit '/about'
-end

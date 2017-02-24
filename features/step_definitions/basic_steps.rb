@@ -7,6 +7,10 @@ Given(/^I visit the menu page$/) do
   visit '/menu'
 end
 
+Given(/^I visit the about page$/) do
+  visit '/about'
+end
+
 Then(/^I should see "([^"]*)"$/) do |content|
    expect(page).to have_content content
 end
