@@ -19,3 +19,7 @@ Then(/^I should see "([^"]*)" with "([^"]*)"$/) do |name, price|
   expect(page).to have_content name
   expect(page).to have_content price
 end
+
+Then(/^show me the page$/) do
+  save_and_open_page
+end

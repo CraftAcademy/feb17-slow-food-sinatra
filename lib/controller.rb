@@ -63,6 +63,11 @@ class SlowFood < Sinatra::Base
     erb :menu
   end
 
+  get '/about' do
+    @restaurant = Restaurant.last
+    erb :about
+  end
+
   get '/auth/login' do
     erb :login
   end
