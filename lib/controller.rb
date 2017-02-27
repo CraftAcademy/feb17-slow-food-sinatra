@@ -52,6 +52,7 @@ class SlowFood < Sinatra::Base
     env['REQUEST_METHOD'] = 'POST'
   end
 
+
   get '/' do
     erb :index
   end
@@ -75,6 +76,30 @@ class SlowFood < Sinatra::Base
      erb :menu
   end
 
+  get '/owner' do
+    @starter = Dish.all(category: 'starter')
+    @main_course = Dish.all(category: 'main_course')
+    @dessert = Dish.all(category: 'dessert')
+    erb :owner
+  end
+
+  post '/owner' do
+      @starter = Dish.all(category: 'starter')
+      @main_course = Dish.all(category: 'main_course')
+      @dessert = Dish.all(category: 'dessert')
+      ownername = params[:name]
+      ownerprice = params[:price]
+      ownercategory = params[:category]
+      owner2 = Dish.create(name: ownername, price: ownerprice, category: ownercategory)
+      owner2.save
+      erase = params[:subject]
+      if erase != nil
+        tag = Dish.all(:id => erase)
+        tag.all.destroy
+      end
+
+      erb :owner
+    end
 
   post '/auth/login' do
     env['warden'].authenticate!
